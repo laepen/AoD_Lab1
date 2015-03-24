@@ -1,12 +1,27 @@
-// Author(s):
-// Email:	
-// Date:	
+// Author(s): Tobias Nielsen, Marcus Johnsson
+// Version: 
+// Date: 2015-03-25		
+
+import java.util.*;
+import java.io.*;
 
 public class AngloTrainer {
 	// ...
-
+	private Random randomgenerator = new Random();
+	private BufferedReader buffreader; 
+	private ArrayList<String> wordList = new ArrayList<String>();
+	private Scanner scanner = new Scanner(buffreader);
+	
+	
+	
+	
+	
 	public AngloTrainer(String dictionaryFile) throws IOException {
 	    // ... define!
+		ArrayList<String> dictionary;
+		
+		
+		
 	}
 
 	// use this to verify loadDictionary
@@ -19,6 +34,8 @@ public class AngloTrainer {
 	    // Read the dictionary into a suitable container.
 	    // The file is a simple text file. One word per line.
           // ... define!
+		
+		
 	}
 
 	private String randomLetters( int length ) {

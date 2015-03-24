@@ -1,6 +1,6 @@
-// Author(s):
+// Author(s): Tobias Nielsen, Marcus Johnsson
 // Version: 
-// Date:	
+// Date: 2015-03-25	
 
 public class WordLists {
 	private Reader in = null;
