@@ -7,48 +7,63 @@ import java.io.*;
 
 public class AngloTrainer {
 	// ...
-	private Random randomgenerator = new Random();
-	private BufferedReader buffreader; 
-	private ArrayList<String> wordList = new ArrayList<String>();
-	private Scanner scanner = new Scanner(buffreader);
-	
-	
-	
-	
-	
+	private Random randomGenerator = new Random();
+	private BufferedReader buffReader; 
+	private HashSet<String> wordList = new HashSet<String>();
+	private HashSet<String> userGuess = new HashSet<String>();
+	private Scanner scanner;
+	private String randomWord; 
+	private int wordLength = 0;
+	static AngloTrainer angloTrainer;
+
+
+
+
 	public AngloTrainer(String dictionaryFile) throws IOException {
-	    // ... define!
-		ArrayList<String> dictionary;
-		
-		
-		
+		loadDictionary(dictionaryFile);
 	}
 
 	// use this to verify loadDictionary
 	private void dumpDict() {
-	    // Print out the dictionary at the screen.
-          // ... define!
+		// Print out the dictionary at the screen.
+		// ... define!
 	}
 
 	private void loadDictionary( String fileName ) {
-	    // Read the dictionary into a suitable container.
-	    // The file is a simple text file. One word per line.
-          // ... define!
-		
-		
+		// Read the dictionary into a suitable container.
+		// The file is a simple text file. One word per line.
+		// ... define!
+		try{
+			String temp; 
+			FileReader fr = new FileReader(fileName);
+			scanner = new Scanner(buffReader);
+
+			while(scanner.hasNextLine()){
+				String word = scanner.nextLine();
+				wordList.add(word);
+
+				if(word.length() > wordLength)
+					wordLength = word.length();
+			}
+			fr.close();
+		}
+		catch(IOException e){
+			e.printStackTrace();
+		}
+
 	}
 
 	private String randomLetters( int length ) {
-	    // this makes vovels a little more likely
-	    String letters = "aabcdeefghiijklmnoopqrstuuvwxyyz";  
-	    StringBuffer buf = new StringBuffer(length);
-	    for ( int i = 0; i < length; i++ ) 
-		    buf.append( letters.charAt(randomGenerator.nextInt(letters.length())));
-	
-	    return buf.toString();
+		// this makes vovels a little more likely
+		String letters = "aabcdeefghiijklmnoopqrstuuvwxyyz";  
+		StringBuffer buf = new StringBuffer(length);
+		for ( int i = 0; i < length; i++ ) 
+			buf.append( letters.charAt(randomGenerator.nextInt(letters.length())));
+
+		return buf.toString();
 	}
-	
-	
+
+
 	/* Def. includes	
 	 * Let #(x,s) = the number of occurrences of the charcter x in the string s.
 	 * includes(a,b) holds iff for every character x in b, #(x,b) <= #(x,a)
@@ -61,7 +76,7 @@ public class AngloTrainer {
 			return true;
 		else if ( a == null || a.length() == 0 )
 			return false;
-		
+
 		//precondition: a.length() > 0 && b.length() > 0
 		int i = 0, j = 0;
 		while ( j < b.length() ) {
@@ -75,8 +90,8 @@ public class AngloTrainer {
 		//postcondition: j == b.length()
 		return true;
 	}
-	
-     // This is just for demonstration purposes.
+
+	// This is just for demonstration purposes.
 	private void testIncludes() { 
 		//                                            expected value
 		System.out.println(includes("abc",""));		//t
@@ -104,9 +119,9 @@ public class AngloTrainer {
 		System.out.println(includes("abc",null));   //t
 	}
 
-    public static void main(String[] args) {
-        // ... define!
-    }
+	public static void main(String[] args) {
+		// ... define!
+	}
 }
 
 
